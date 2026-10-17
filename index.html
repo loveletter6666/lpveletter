@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#172554">
+  <meta name="description" content="중학교 3학년 한국사 조선 후기의 사회 변동 단원 퀴즈">
+  <title>조선 후기의 사회 변동 | 역사 퀴즈</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="역사 퀴즈 홈">
+      <span class="brand-icon">史</span>
+      <span>역사 탐험대</span>
+    </a>
+    <span class="grade-badge">중학교 3학년 한국사</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-label">
+        <span class="hero-dot"></span>
+        HISTORY QUEST
+      </div>
+      <h1>조선 후기의<br><span>사회 변동</span></h1>
+      <p class="hero-description">
+        역사의 흐름을 읽고, 지식을 완성하자!
+        <br>10개의 문제를 풀며 조선 후기 사회를 탐험해 보세요.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">10</span>
+          <span class="stat-label">전체 문제</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">5</span>
+          <span class="stat-label">선택지</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">100</span>
+          <span class="stat-label">만점</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="quiz-panel" aria-label="한국사 퀴즈">
+      <div id="start-screen" class="screen">
+        <div class="section-kicker">MISSION 01 — 10</div>
+        <h2>역사 탐험을 시작할까요?</h2>
+        <p class="screen-description">
+          문제를 읽고 정답이라고 생각하는 선택지를 눌러 보세요.
+          정답과 해설을 확인한 후 다음 문제로 이동할 수 있어요.
+        </p>
+
+        <div class="topic-list">
+          <div class="topic-item">
+            <span class="topic-icon">🌾</span>
+            <div>
+              <strong>농업과 상업의 발달</strong>
+              <span>모내기법 · 상품 화폐 경제</span>
+            </div>
+          </div>
+          <div class="topic-item">
+            <span class="topic-icon">⚖️</span>
+            <div>
+              <strong>신분제의 동요</strong>
+              <span>양반 증가 · 서얼 · 노비</span>
+            </div>
+          </div>
+          <div class="topic-item">
+            <span class="topic-icon">📚</span>
+            <div>
+              <strong>실학과 서민 문화</strong>
+              <span>실학자 · 판소리 · 풍속화</span>
+            </div>
+          </div>
+        </div>
+
+        <button id="start-btn" class="btn btn-primary btn-large">
+          퀴즈 시작하기 <span aria-hidden="true">→</span>
+        </button>
+      </div>
+
+      <div id="quiz-screen" class="screen hidden">
+        <div class="quiz-meta">
+          <span id="question-counter" class="question-counter">QUESTION 01 / 10</span>
+          <span id="score-display" class="score-display">⭐ 0점</span>
+        </div>
+
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-label="퀴즈 진행률"
+          aria-valuemin="0"
+          aria-valuemax="10"
+          aria-valuenow="0"
+          id="progress-track"
+        >
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+
+        <div class="question-category" id="question-category">농업과 상업</div>
+        <h2 id="question-text" class="question-text" tabindex="-1">
+          문제 내용
+        </h2>
+
+        <div id="options-container" class="options-container"></div>
+
+        <div
+          id="feedback-box"
+          class="feedback-box hidden"
+          aria-live="polite"
+        >
+          <div class="feedback-heading" id="feedback-heading"></div>
+          <p id="feedback-text"></p>
+        </div>
+
+        <div class="quiz-footer">
+          <span id="answered-count">아직 답하지 않았어요.</span>
+          <button id="next-btn" class="btn btn-primary" disabled>
+            정답을 선택하세요
+          </button>
+        </div>
+      </div>
+
+      <div id="result-screen" class="screen hidden">
+        <div class="result-icon" id="result-icon" aria-hidden="true">🏆</div>
+        <div class="section-kicker">MISSION COMPLETE</div>
+        <h2 id="result-title">탐험 완료!</h2>
+        <p id="result-message" class="screen-description"></p>
+
+        <div class="result-score-card">
+          <span class="result-score-label">최종 점수</span>
+          <div class="result-score">
+            <span id="final-score">0</span><small> / 100점</small>
+          </div>
+          <div class="result-progress-track">
+            <div id="result-progress-fill"></div>
+          </div>
+          <p id="result-correct-count">10문제 중 0문제 정답</p>
+        </div>
+
+        <div id="wrong-answers-section" class="wrong-answers-section hidden">
+          <h3>다시 살펴볼 문제</h3>
+          <div id="wrong-answers-list"></div>
+        </div>
+
+        <button id="retry-btn" class="btn btn-primary btn-large">
+          <span aria-hidden="true">↻</span> 다시 도전하기
+        </button>
+        <p class="result-note">반복해서 풀면 역사 지식이 더 탄탄해져요!</p>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <p>오늘의 역사 한 걸음, 내일의 실력 한 단계.</p>
+      <span>한국사 학습 퀴즈 · 조선 후기의 사회 변동</span>
+    </footer>
+  </main>
+</body>
+</html>
